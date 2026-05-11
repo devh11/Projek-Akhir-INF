@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informatika SMA - Platform Belajar Informatika Kelas 10</title>
+    <style>
+        /* ===== VARIABEL WARNA & TEMA ===== */
+        :root {
+            --primary: #1a4d7a;
+            --primary-light: #2d6fa3;
+            --bg-light: #f8f9fa;
+            --text-dark: #2c3e50;
+            --accent: #00bcd4;
+            --white: #ffffff;
+            --shadow: 0 2px 8px rgba(26, 77, 122, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* ===== HEADER & NAVIGASI ===== */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-placeholder {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: bold;
+        }
+
+        /* Menu Desktop */
+        .nav-menu {
+            display: none;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+            border-bottom-color: var(--accent);
+        }
+
+        /* Hamburger Menu Mobile */
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--primary);
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(10px, 10px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Menu Mobile */
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background-color: var(--white);
+            flex-direction: column;
+            gap: 0;
+            box-shadow: var(--shadow);
+            list-style: none;
+            animation: slideDown 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .mobile-menu li {
+            border-bottom: 1px solid var(--bg-light);
+        }
+
+        .mobile-menu a {
+            display: block;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 1rem 1.5rem;
+            transition: var(--transition);
+        }
+
+        .mobile-menu a:active {
+            background-color: var(--bg-light);
+            color: var(--primary);
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--white);
+            padding: 3rem 1.5rem;
+            text-align: center;
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: bold;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            line-height: 1.5;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--primary);
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+            margin-top: 1rem;
+        }
+
+        .hero-cta:active {
+            transform: scale(0.98);
+            opacity: 0.9;
+        }
+
+        /* ===== SECTION UMUM ===== */
+        section {
+            padding: 2.5rem 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            text-align: center;
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 1rem;
+        }
+
+        /* ===== PLACEHOLDER CARDS ===== */
+        .section-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .placeholder-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #bbb;
+            border: 2px dashed #ddd;
+            transition: var(--transition);
+        }
+
+        .placeholder-card:active {
+            border-color: var(--accent);
+            box-shadow: 0 4px 12px rgba(0, 188, 212, 0.2);
+        }
+
+        .placeholder-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 1.5rem;
+            margin-top: 3rem;
+            border-top: 4px solid var(--accent);
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== RESPONSIVE DESKTOP ===== */
+        @media (min-width: 768px) {
+            nav {
+                padding: 1rem 2rem;
+            }
+
+            .logo {
+                font-size: 1.8rem;
+            }
+
+            .hamburger {
+                display: none;
+            }
+
+            .nav-menu {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: none !important;
+            }
+
+            .hero {
+                padding: 5rem 2rem;
+                min-height: 70vh;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero p {
+                font-size: 1.3rem;
+                max-width: 600px;
+            }
+
+            section {
+                padding: 4rem 2rem;
+            }
+
+            section h2 {
+                font-size: 2.2rem;
+            }
+
+            .section-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .placeholder-card {
+                min-height: 250px;
+            }
+
+            .placeholder-icon {
+                font-size: 4rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            nav {
+                padding: 1.5rem 2rem;
+            }
+
+            .nav-menu {
+                gap: 2.5rem;
+            }
+
+            .hero {
+                padding: 6rem 2rem;
+            }
+
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+
+            section {
+                padding: 5rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER & NAVIGASI -->
+    <header>
+        <nav>
+            <a href="#home" class="logo">
+                <div class="logo-placeholder">INF</div>
+                <span>Informatika SMA</span>
+            </a>
+            
+            <!-- Menu Desktop -->
+            <ul class="nav-menu">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#materi">Materi</a></li>
+                <li><a href="#latihan">Latihan</a></li>
+                <li><a href="#tentang">Tentang Kami</a></li>
+            </ul>
+
+            <!-- Hamburger Menu Mobile -->
+            <button class="hamburger" id="hamburgerBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <ul class="mobile-menu" id="mobileMenu">
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="#materi">Materi</a></li>
+            <li><a href="#latihan">Latihan</a></li>
+            <li><a href="#tentang">Tentang Kami</a></li>
+        </ul>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <h1>Selamat Datang di Informatika SMA</h1>
+        <p>Platform belajar informatika yang dirancang khusus untuk siswa kelas 10. Materi ringkas, jelas, dan mudah dipahami dengan latihan soal interaktif.</p>
+        <a href="#materi" class="hero-cta">Mulai Belajar</a>
+    </section>
+
+    <!-- MATERI SECTION -->
+    <section id="materi">
+        <h2>📚 Materi Pembelajaran</h2>
+        <div class="section-grid">
+            <div class="placeholder-card">
+                <div class="placeholder-icon">🏗️</div>
+                <h3>HTML Dasar</h3>
+                <p>Pelajari struktur dasar halaman web</p>
+            </div>
+            <div class="placeholder-card">
+                <div class="placeholder-icon">🎨</div>
+                <h3>CSS Dasar</h3>
+                <p>Belajar mempercantik tampilan website</p>
+            </div>
+            <div class="placeholder-card">
+                <div class="placeholder-icon">💻</div>
+                <h3>Coding Dasar</h3>
+                <p>Pahami logika pemrograman sederhana</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- LATIHAN SECTION -->
+    <section id="latihan">
+        <h2>✏️ Latihan & Kuis</h2>
+        <div class="section-grid">
+            <div class="placeholder-card">
+                <div class="placeholder-icon">❓</div>
+                <p>Kuis interaktif dengan sistem scoring akan ditampilkan di sini</p>
+            </div>
+            <div class="placeholder-card">
+                <div class="placeholder-icon">📊</div>
+                <p>Lihat hasil skor Anda secara real-time</p>
+            </div>
+            <div class="placeholder-card">
+                <div class="placeholder-icon">🏆</div>
+                <p>Ukur pemahaman dengan soal-soal pilihan ganda</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TENTANG KAMI SECTION -->
+    <section id="tentang">
+        <h2>ℹ️ Tentang Kami</h2>
+        <div class="section-grid">
+            <div class="placeholder-card">
+                <div class="placeholder-icon">👨‍💼</div>
+                <p>Informasi tentang pembuat website akan ditampilkan di sini</p>
+            </div>
+            <div class="placeholder-card">
+                <div class="placeholder-icon">🎯</div>
+                <p>Misi kami adalah membuat belajar informatika menjadi mudah dan menyenangkan</p>
+            </div>
+            <div class="placeholder-card">
+                <div class="placeholder-icon">📞</div>
+                <p>Hubungi kami untuk pertanyaan atau saran perbaikan</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Informatika SMA. Platform Pembelajaran untuk Kelas 10.</p>
+        <p>Dikembangkan dengan ❤️ untuk pendidikan Indonesia</p>
+        <p><a href="#home">← Kembali ke Atas</a></p>
+    </footer>
+
+    <script>
+        // HAMBURGER MENU TOGGLE
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        hamburgerBtn.addEventListener('click', () => {
+            hamburgerBtn.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // TUTUP MENU SAAT LINK DIKLIK
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburgerBtn.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
