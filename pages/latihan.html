@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan & Kuis - Informatika SMA</title>
+    <style>
+        /* ===== VARIABEL WARNA & TEMA ===== */
+        :root {
+            --primary: #1a4d7a;
+            --primary-light: #2d6fa3;
+            --bg-light: #f8f9fa;
+            --text-dark: #2c3e50;
+            --accent: #00bcd4;
+            --white: #ffffff;
+            --shadow: 0 2px 8px rgba(26, 77, 122, 0.1);
+            --transition: all 0.3s ease;
+            --success: #27ae60;
+            --danger: #e74c3c;
+            --warning: #f39c12;
+        }
+
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* ===== HEADER & NAVIGASI ===== */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-placeholder {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: bold;
+        }
+
+        /* Menu Desktop */
+        .nav-menu {
+            display: none;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--primary);
+            border-bottom-color: var(--accent);
+        }
+
+        /* Hamburger Menu Mobile */
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--primary);
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(10px, 10px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Menu Mobile */
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background-color: var(--white);
+            flex-direction: column;
+            gap: 0;
+            box-shadow: var(--shadow);
+            list-style: none;
+            animation: slideDown 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .mobile-menu li {
+            border-bottom: 1px solid var(--bg-light);
+        }
+
+        .mobile-menu a {
+            display: block;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 1rem 1.5rem;
+            transition: var(--transition);
+        }
+
+        .mobile-menu a:active {
+            background-color: var(--bg-light);
+            color: var(--primary);
+        }
+
+        /* ===== PAGE HEADER ===== */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--white);
+            padding: 2rem 1.5rem;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-header p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* ===== BACK LINK ===== */
+        .back-link {
+            display: inline-block;
+            padding: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .back-link a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .back-link a:hover {
+            color: var(--primary-light);
+            gap: 1rem;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* ===== QUIZ CONTAINER ===== */
+        .quiz-container {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        /* ===== PROGRESS BAR ===== */
+        .progress-section {
+            margin-bottom: 2rem;
+        }
+
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .progress-bar {
+            background-color: var(--bg-light);
+            height: 10px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, var(--accent) 0%, var(--primary-light) 100%);
+            height: 100%;
+            width: 0%;
+            transition: var(--transition);
+            border-radius: 10px;
+        }
+
+        /* ===== QUESTION SECTION ===== */
+        .question-section {
+            margin-bottom: 2rem;
+            display: none;
+        }
+
+        .question-section.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .question-number {
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .question-text {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        /* ===== OPTIONS (ANSWERS) ===== */
+        .options-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .option-btn {
+            background-color: var(--white);
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: left;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: var(--transition);
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .option-btn:hover {
+            border-color: var(--accent);
+            background-color: rgba(0, 188, 212, 0.05);
+        }
+
+        .option-btn:active {
+            border-color: var(--accent);
+            background-color: rgba(0, 188, 212, 0.1);
+        }
+
+        .option-btn.selected {
+            border-color: var(--accent);
+            background-color: rgba(0, 188, 212, 0.15);
+        }
+
+        .option-btn.correct {
+            border-color: var(--success);
+            background-color: rgba(39, 174, 96, 0.1);
+        }
+
+        .option-btn.incorrect {
+            border-color: var(--danger);
+            background-color: rgba(231, 76, 60, 0.1);
+        }
+
+        /* ===== NAVIGATION BUTTONS ===== */
+        .quiz-nav {
+            display: flex;
+            gap: 1rem;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+
+        .quiz-btn {
+            flex: 1;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .quiz-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-prev {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-prev:hover:not(:disabled) {
+            background-color: var(--primary-light);
+        }
+
+        .btn-next {
+            background-color: var(--accent);
+            color: var(--primary);
+        }
+
+        .btn-next:hover:not(:disabled) {
+            opacity: 0.9;
+        }
+
+        .btn-submit {
+            background-color: var(--success);
+            color: var(--white);
+            width: 100%;
+        }
+
+        .btn-submit:hover:not(:disabled) {
+            opacity: 0.9;
+        }
+
+        /* ===== RESULT SECTION ===== */
+        .result-section {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .result-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .result-score-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--primary-light) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 2rem;
+            color: var(--white);
+        }
+
+        .result-score-number {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .result-score-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .result-title {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .result-message {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .result-details {
+            background-color: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .detail-value {
+            color: var(--text-dark);
+        }
+
+        .btn-restart {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-restart:hover {
+            background-color: var(--primary-light);
+        }
+
+        .btn-home {
+            background-color: var(--accent);
+            color: var(--primary);
+            padding: 0.75rem 2rem;
+            margin-left: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: var(--transition);
+        }
+
+        .btn-home:hover {
+            opacity: 0.9;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 1.5rem;
+            margin-top: 3rem;
+            border-top: 4px solid var(--accent);
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== RESPONSIVE DESKTOP ===== */
+        @media (min-width: 768px) {
+            nav {
+                padding: 1rem 2rem;
+            }
+
+            .hamburger {
+                display: none;
+            }
+
+            .nav-menu {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: none !important;
+            }
+
+            .page-header {
+                padding: 3rem 2rem;
+            }
+
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            main {
+                padding: 3rem 2rem;
+            }
+
+            .quiz-container {
+                padding: 3rem;
+            }
+
+            .options-container {
+                grid-template-columns: 1fr;
+            }
+
+            .quiz-nav {
+                gap: 1.5rem;
+            }
+
+            .result-score-circle {
+                width: 200px;
+                height: 200px;
+            }
+
+            .result-score-number {
+                font-size: 4rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            nav {
+                padding: 1.5rem 2rem;
+            }
+
+            main {
+                padding: 4rem 2rem;
+            }
+
+            .quiz-container {
+                padding: 4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER & NAVIGASI -->
+    <header>
+        <nav>
+            <a href="../index.html" class="logo">
+                <div class="logo-placeholder">INF</div>
+                <span>Informatika SMA</span>
+            </a>
+            
+            <!-- Menu Desktop -->
+            <ul class="nav-menu">
+                <li><a href="../index.html">Beranda</a></li>
+                <li><a href="../pages/materi.html">Materi</a></li>
+                <li><a href="#" class="active">Latihan</a></li>
+                <li><a href="../index.html#tentang">Tentang Kami</a></li>
+            </ul>
+
+            <!-- Hamburger Menu Mobile -->
+            <button class="hamburger" id="hamburgerBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <ul class="mobile-menu" id="mobileMenu">
+            <li><a href="../index.html">Beranda</a></li>
+            <li><a href="../pages/materi.html">Materi</a></li>
+            <li><a href="#" class="active">Latihan</a></li>
+            <li><a href="../index.html#tentang">Tentang Kami</a></li>
+        </ul>
+    </header>
+
+    <!-- PAGE HEADER -->
+    <section class="page-header">
+        <h1>✏️ Latihan & Kuis Interaktif</h1>
+        <p>Uji pemahaman Anda dengan menjawab soal-soal pilihan ganda di bawah ini</p>
+    </section>
+
+    <!-- BACK LINK -->
+    <div class="back-link">
+        <a href="../index.html">← Kembali ke Beranda</a>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <div class="quiz-container">
+            <!-- PROGRESS BAR -->
+            <div class="progress-section">
+                <div class="progress-text">
+                    <span>Progres Kuis</span>
+                    <span><span id="currentQuestion">1</span> / <span id="totalQuestion">10</span></span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+
+            <!-- QUESTION SECTION -->
+            <div id="quizContent"></div>
+
+            <!-- RESULT SECTION -->
+            <div class="result-section" id="resultSection">
+                <div class="result-score-circle">
+                    <div class="result-score-number" id="resultScore">0</div>
+                    <div class="result-score-label">dari 100</div>
+                </div>
+                <div class="result-title" id="resultTitle">Selamat!</div>
+                <div class="result-message" id="resultMessage"></div>
+
+                <div class="result-details">
+                    <div class="detail-row">
+                        <span class="detail-label">Jumlah Soal:</span>
+                        <span class="detail-value" id="totalQuestionsResult">10</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Jawaban Benar:</span>
+                        <span class="detail-value" id="correctAnswersResult">0</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Jawaban Salah:</span>
+                        <span class="detail-value" id="wrongAnswersResult">0</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Tingkat Akurasi:</span>
+                        <span class="detail-value" id="accuracyResult">0%</span>
+                    </div>
+                </div>
+
+                <div>
+                    <button class="btn-restart" onclick="location.reload()">🔄 Coba Lagi</button>
+                    <a href="../index.html" class="btn-home">🏠 Kembali ke Beranda</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Informatika SMA. Platform Pembelajaran untuk Kelas 10.</p>
+        <p>Dikembangkan dengan ❤️ untuk pendidikan Indonesia</p>
+        <p><a href="../index.html">← Kembali ke Beranda</a></p>
+    </footer>
+
+    <script>
+        // ===== DATA SOAL KUIS =====
+        const quizData = [
+            {
+                question: "Apa kepanjangan dari HTML?",
+                options: ["Hyper Text Markup Language", "High Tech Modern Language", "Home Tool Markup Language", "Hyper Transfer Markup Logic"],
+                correct: 0,
+                explanation: "HTML adalah Hyper Text Markup Language, bahasa yang digunakan untuk membuat struktur halaman web."
+            },
+            {
+                question: "Tag mana yang digunakan untuk membuat paragraf di HTML?",
+                options: ["<para>", "<p>", "<paragraph>", "<text>"],
+                correct: 1,
+                explanation: "Tag <p> digunakan untuk membuat paragraf (paragraph) di HTML."
+            },
+            {
+                question: "Apa fungsi utama CSS?",
+                options: ["Membuat struktur halaman", "Mengatur gaya dan tampilan halaman", "Membuat database", "Mengirim data ke server"],
+                correct: 1,
+                explanation: "CSS (Cascading Style Sheets) berfungsi untuk mengatur gaya dan tampilan dari elemen HTML."
+            },
+            {
+                question: "Properti CSS mana yang digunakan untuk mengubah warna teks?",
+                options: ["text-color", "color", "font-color", "text-style"],
+                correct: 1,
+                explanation: "Properti 'color' digunakan untuk mengubah warna teks di CSS."
+            },
+            {
+                question: "Apa itu variabel dalam pemrograman?",
+                options: ["Fungsi yang berulang", "Tempat menyimpan data sementara", "Perintah komputer", "Jenis error pemrograman"],
+                correct: 1,
+                explanation: "Variabel adalah tempat/kotak penyimpanan data sementara dalam program."
+            },
+            {
+                question: "Manakah operator perbandingan yang berarti 'sama dengan'?",
+                options: ["=", "==", "!=", ">="],
+                correct: 1,
+                explanation: "Operator == digunakan untuk memeriksa apakah dua nilai sama (comparison operator)."
+            },
+            {
+                question: "Struktur If-Else digunakan untuk apa?",
+                options: ["Membuat loop", "Membuat keputusan berdasarkan kondisi", "Membuat function", "Menyimpan data"],
+                correct: 1,
+                explanation: "If-Else digunakan untuk membuat keputusan dalam program berdasarkan kondisi yang diberikan."
+            },
+            {
+                question: "Berapa nilai dari 10 + 5 * 2 dalam pemrograman?",
+                options: ["30", "20", "25", "40"],
+                correct: 2,
+                explanation: "Sesuai aturan matematika, perkalian dijalankan terlebih dahulu: 5 * 2 = 10, kemudian 10 + 10 = 20."
+            },
+            {
+                question: "Mana yang bukan termasuk jenis data dasar?",
+                options: ["String", "Number", "Boolean", "Function"],
+                correct: 3,
+                explanation: "Jenis data dasar adalah String, Number, dan Boolean. Function adalah struktur kode, bukan jenis data."
+            },
+            {
+                question: "Apa output dari kode: if (5 > 3) { console.log('Benar'); } else { console.log('Salah'); }",
+                options: ["Salah", "Benar", "Tidak ada output", "Error"],
+                correct: 1,
+                explanation: "Karena 5 lebih besar dari 3 (kondisi TRUE), maka output adalah 'Benar'."
+            }
+        ];
+
+        // ===== STATE MANAGEMENT =====
+        let currentQuestion = 0;
+        let score = 0;
+        let answers = [];
+
+        // ===== INIT QUIZ =====
+        function initQuiz() {
+            document.getElementById('totalQuestion').textContent = quizData.length;
+            document.getElementById('totalQuestionsResult').textContent = quizData.length;
+            renderQuestion();
+        }
+
+        // ===== RENDER QUESTION =====
+        function renderQuestion() {
+            const quizContent = document.getElementById('quizContent');
+            const question = quizData[currentQuestion];
+
+            let html = `
+                <div class="question-section active">
+                    <div class="question-number">Soal ${currentQuestion + 1} dari ${quizData.length}</div>
+                    <div class="question-text">${question.question}</div>
+                    <div class="options-container" id="optionsContainer">
+            `;
+
+            question.options.forEach((option, index) => {
+                html += `
+                    <button class="option-btn" onclick="selectAnswer(${index})">
+                        ${String.fromCharCode(65 + index)}. ${option}
+                    </button>
+                `;
+            });
+
+            html += `
+                    </div>
+                </div>
+                <div class="quiz-nav">
+                    <button class="quiz-btn btn-prev" onclick="previousQuestion()" ${currentQuestion === 0 ? 'disabled' : ''}>← Sebelumnya</button>
+                    <button class="quiz-btn btn-next" onclick="nextQuestion()" ${currentQuestion === quizData.length - 1 ? 'style=display:none' : ''}>Selanjutnya →</button>
+                    <button class="quiz-btn btn-submit" onclick="submitQuiz()" ${currentQuestion === quizData.length - 1 ? '' : 'style=display:none'}>Selesai & Lihat Hasil</button>
+                </div>
+            `;
+
+            quizContent.innerHTML = html;
+            updateProgress();
+        }
+
+        // ===== SELECT ANSWER =====
+        function selectAnswer(index) {
+            answers[currentQuestion] = index;
+            
+            // Highlight selected option
+            const buttons = document.querySelectorAll('.option-btn');
+            buttons.forEach((btn, i) => {
+                btn.classList.remove('selected');
+                if (i === index) {
+                    btn.classList.add('selected');
+                }
+            });
+        }
+
+        // ===== NEXT QUESTION =====
+        function nextQuestion() {
+            if (currentQuestion < quizData.length - 1) {
+                currentQuestion++;
+                renderQuestion();
+            }
+        }
+
+        // ===== PREVIOUS QUESTION =====
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                renderQuestion();
+            }
+        }
+
+        // ===== UPDATE PROGRESS =====
+        function updateProgress() {
+            const progress = ((currentQuestion + 1) / quizData.length) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('currentQuestion').textContent = currentQuestion + 1;
+        }
+
+        // ===== SUBMIT QUIZ =====
+        function submitQuiz() {
+            // Calculate score
+            score = 0;
+            let correctCount = 0;
+
+            quizData.forEach((question, index) => {
+                if (answers[index] === question.correct) {
+                    score += 10;
+                    correctCount++;
+                }
+            });
+
+            const wrongCount = quizData.length - correctCount;
+            const accuracy = Math.round((correctCount / quizData.length) * 100);
+
+            // Show result
+            document.getElementById('quizContent').style.display = 'none';
+            document.getElementById('resultSection').classList.add('active');
+            document.getElementById('resultScore').textContent = score;
+            document.getElementById('correctAnswersResult').textContent = correctCount;
+            document.getElementById('wrongAnswersResult').textContent = wrongCount;
+            document.getElementById('accuracyResult').textContent = accuracy + '%';
+
+            // Result message
+            let resultTitle, resultMessage;
+            if (score >= 80) {
+                resultTitle = '🎉 Luar Biasa!';
+                resultMessage = `Anda mendapatkan skor ${score}! Pemahaman Anda tentang informatika sangat baik. Terus tingkatkan pengetahuan Anda!`;
+            } else if (score >= 60) {
+                resultTitle = '👍 Bagus!';
+                resultMessage = `Anda mendapatkan skor ${score}. Kemampuan Anda cukup baik, namun masih ada yang perlu ditingkatkan. Pelajari kembali materi yang kurang dipahami.`;
+            } else if (score >= 40) {
+                resultTitle = '📚 Perlu Belajar Lebih';
+                resultMessage = `Anda mendapatkan skor ${score}. Sebaiknya Anda mempelajari kembali materi dengan lebih seksama. Jangan menyerah, terus berlatih!`;
+            } else {
+                resultTitle = '💪 Semangat!';
+                resultMessage = `Anda mendapatkan skor ${score}. Pelajari kembali semua materi dan coba lagi. Kesalahan adalah bagian dari pembelajaran!`;
+            }
+
+            document.getElementById('resultTitle').textContent = resultTitle;
+            document.getElementById('resultMessage').textContent = resultMessage;
+        }
+
+        // ===== HAMBURGER MENU =====
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        hamburgerBtn.addEventListener('click', () => {
+            hamburgerBtn.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburgerBtn.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // ===== START QUIZ =====
+        initQuiz();
+    </script>
+</body>
+</html>
