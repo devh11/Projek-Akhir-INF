@@ -258,25 +258,20 @@
             cursor: pointer;
         }
 
-        .placeholder-card:hover {
-            border-color: var(--accent);
-            box-shadow: 0 4px 12px rgba(0, 188, 212, 0.2);
-        }
-
+        .placeholder-card:hover,
         .placeholder-card:active {
             border-color: var(--accent);
             box-shadow: 0 4px 12px rgba(0, 188, 212, 0.2);
-            transform: scale(0.98);
+            color: var(--text-dark);
+        }
+
+        .placeholder-card h3 {
+            color: var(--primary);
         }
 
         .placeholder-icon {
             font-size: 3rem;
             margin-bottom: 1rem;
-        }
-
-        .placeholder-card h3 {
-            color: var(--text-dark);
-            margin-bottom: 0.5rem;
         }
 
         /* ===== FOOTER ===== */
@@ -397,7 +392,7 @@
                 <li><a href="#home">Beranda</a></li>
                 <li><a href="pages/materi.html">Materi</a></li>
                 <li><a href="pages/latihan.html">Latihan</a></li>
-                <li><a href="#tentang">Tentang Kami</a></li>
+                <li><a href="pages/tentang.html">Tentang Kami</a></li>
             </ul>
 
             <!-- Hamburger Menu Mobile -->
@@ -413,7 +408,7 @@
             <li><a href="#home">Beranda</a></li>
             <li><a href="pages/materi.html">Materi</a></li>
             <li><a href="pages/latihan.html">Latihan</a></li>
-            <li><a href="#tentang">Tentang Kami</a></li>
+            <li><a href="pages/tentang.html">Tentang Kami</a></li>
         </ul>
     </header>
 
@@ -428,17 +423,17 @@
     <section id="materi">
         <h2>📚 Materi Pembelajaran</h2>
         <div class="section-grid">
-            <a href="pages/materi.html#materi-html" class="placeholder-card">
+            <a href="pages/materi.html" class="placeholder-card">
                 <div class="placeholder-icon">🏗️</div>
                 <h3>HTML Dasar</h3>
                 <p>Pelajari struktur dasar halaman web</p>
             </a>
-            <a href="pages/materi.html#materi-css" class="placeholder-card">
+            <a href="pages/materi.html" class="placeholder-card">
                 <div class="placeholder-icon">🎨</div>
                 <h3>CSS Dasar</h3>
                 <p>Belajar mempercantik tampilan website</p>
             </a>
-            <a href="pages/materi.html#materi-coding" class="placeholder-card">
+            <a href="pages/materi.html" class="placeholder-card">
                 <div class="placeholder-icon">💻</div>
                 <h3>Coding Dasar</h3>
                 <p>Pahami logika pemrograman sederhana</p>
@@ -452,15 +447,18 @@
         <div class="section-grid">
             <a href="pages/latihan.html" class="placeholder-card">
                 <div class="placeholder-icon">❓</div>
-                <p>Kuis interaktif dengan sistem scoring akan ditampilkan di sini</p>
+                <h3>Kuis Interaktif</h3>
+                <p>Uji pemahaman Anda dengan 10 soal pilihan ganda</p>
             </a>
             <div class="placeholder-card">
                 <div class="placeholder-icon">📊</div>
+                <h3>Sistem Scoring</h3>
                 <p>Lihat hasil skor Anda secara real-time</p>
             </div>
             <div class="placeholder-card">
                 <div class="placeholder-icon">🏆</div>
-                <p>Ukur pemahaman dengan soal-soal pilihan ganda</p>
+                <h3>Feedback & Motivasi</h3>
+                <p>Dapatkan pesan motivasi berdasarkan hasil Anda</p>
             </div>
         </div>
     </section>
@@ -469,18 +467,21 @@
     <section id="tentang">
         <h2>ℹ️ Tentang Kami</h2>
         <div class="section-grid">
-            <div class="placeholder-card">
-                <div class="placeholder-icon">👨‍💼</div>
-                <p>Informasi tentang pembuat website akan ditampilkan di sini</p>
-            </div>
-            <div class="placeholder-card">
+            <a href="pages/tentang.html" class="placeholder-card">
+                <div class="placeholder-icon">👨‍💻</div>
+                <h3>Profil Pembuat</h3>
+                <p>Ketahui lebih lanjut tentang pengembang website</p>
+            </a>
+            <a href="pages/tentang.html" class="placeholder-card">
                 <div class="placeholder-icon">🎯</div>
-                <p>Misi kami adalah membuat belajar informatika menjadi mudah dan menyenangkan</p>
-            </div>
-            <div class="placeholder-card">
-                <div class="placeholder-icon">📞</div>
-                <p>Hubungi kami untuk pertanyaan atau saran perbaikan</p>
-            </div>
+                <h3>Misi & Visi</h3>
+                <p>Pelajari tujuan dan visi platform kami</p>
+            </a>
+            <a href="pages/tentang.html" class="placeholder-card">
+                <div class="placeholder-icon">✨</div>
+                <h3>Keunggulan Platform</h3>
+                <p>Lihat fitur-fitur unggulan yang kami tawarkan</p>
+            </a>
         </div>
     </section>
 
