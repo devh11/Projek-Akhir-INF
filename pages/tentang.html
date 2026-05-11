@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Kami - Informatika SMA</title>
+    <style>
+        /* ===== VARIABEL WARNA & TEMA ===== */
+        :root {
+            --primary: #1a4d7a;
+            --primary-light: #2d6fa3;
+            --bg-light: #f8f9fa;
+            --text-dark: #2c3e50;
+            --accent: #00bcd4;
+            --white: #ffffff;
+            --shadow: 0 2px 8px rgba(26, 77, 122, 0.1);
+            --transition: all 0.3s ease;
+            --success: #27ae60;
+        }
+
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* ===== HEADER & NAVIGASI ===== */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-placeholder {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: bold;
+        }
+
+        /* Menu Desktop */
+        .nav-menu {
+            display: none;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--primary);
+            border-bottom-color: var(--accent);
+        }
+
+        /* Hamburger Menu Mobile */
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--primary);
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(10px, 10px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Menu Mobile */
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background-color: var(--white);
+            flex-direction: column;
+            gap: 0;
+            box-shadow: var(--shadow);
+            list-style: none;
+            animation: slideDown 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .mobile-menu li {
+            border-bottom: 1px solid var(--bg-light);
+        }
+
+        .mobile-menu a {
+            display: block;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 1rem 1.5rem;
+            transition: var(--transition);
+        }
+
+        .mobile-menu a:active {
+            background-color: var(--bg-light);
+            color: var(--primary);
+        }
+
+        /* ===== PAGE HEADER ===== */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--white);
+            padding: 2rem 1.5rem;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-header p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* ===== BACK LINK ===== */
+        .back-link {
+            display: inline-block;
+            padding: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .back-link a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .back-link a:hover {
+            color: var(--primary-light);
+            gap: 1rem;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* ===== SECTION ===== */
+        section {
+            margin-bottom: 3rem;
+        }
+
+        section h2 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 0.75rem;
+        }
+
+        /* ===== PROFILE CARD ===== */
+        .profile-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .profile-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .profile-name {
+            font-size: 1.5rem;
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-info {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .profile-badge {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin: 0.5rem;
+        }
+
+        /* ===== FEATURE GRID ===== */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .feature-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--accent);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-title {
+            font-size: 1.1rem;
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-description {
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* ===== MISSION & VISION ===== */
+        .mission-vision-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .mission-box,
+        .vision-box {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .mission-box {
+            border-top: 5px solid #f39c12;
+        }
+
+        .vision-box {
+            border-top: 5px solid var(--success);
+        }
+
+        .mission-box h3,
+        .vision-box h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .mission-box h3 {
+            color: #f39c12;
+        }
+
+        .vision-box h3 {
+            color: var(--success);
+        }
+
+        .mission-box p,
+        .vision-box p {
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 1.5rem;
+            margin-top: 3rem;
+            border-top: 4px solid var(--accent);
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== RESPONSIVE DESKTOP ===== */
+        @media (min-width: 768px) {
+            nav {
+                padding: 1rem 2rem;
+            }
+
+            .hamburger {
+                display: none;
+            }
+
+            .nav-menu {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: none !important;
+            }
+
+            .page-header {
+                padding: 3rem 2rem;
+            }
+
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            main {
+                padding: 3rem 2rem;
+            }
+
+            .profile-card {
+                padding: 2.5rem;
+            }
+
+            .profile-icon {
+                font-size: 5rem;
+            }
+
+            .feature-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .mission-vision-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            nav {
+                padding: 1.5rem 2rem;
+            }
+
+            main {
+                padding: 4rem 2rem;
+            }
+
+            .profile-card {
+                padding: 3rem;
+                max-width: 600px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .feature-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER & NAVIGASI -->
+    <header>
+        <nav>
+            <a href="../index.html" class="logo">
+                <div class="logo-placeholder">INF</div>
+                <span>Informatika SMA</span>
+            </a>
+            
+            <!-- Menu Desktop -->
+            <ul class="nav-menu">
+                <li><a href="../index.html">Beranda</a></li>
+                <li><a href="../pages/materi.html">Materi</a></li>
+                <li><a href="../pages/latihan.html">Latihan</a></li>
+                <li><a href="#" class="active">Tentang Kami</a></li>
+            </ul>
+
+            <!-- Hamburger Menu Mobile -->
+            <button class="hamburger" id="hamburgerBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <ul class="mobile-menu" id="mobileMenu">
+            <li><a href="../index.html">Beranda</a></li>
+            <li><a href="../pages/materi.html">Materi</a></li>
+            <li><a href="../pages/latihan.html">Latihan</a></li>
+            <li><a href="#" class="active">Tentang Kami</a></li>
+        </ul>
+    </header>
+
+    <!-- PAGE HEADER -->
+    <section class="page-header">
+        <h1>ℹ️ Tentang Kami</h1>
+        <p>Mengenal lebih dekat tentang platform pembelajaran Informatika SMA</p>
+    </section>
+
+    <!-- BACK LINK -->
+    <div class="back-link">
+        <a href="../index.html">← Kembali ke Beranda</a>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- PROFILE SECTION -->
+        <section>
+            <h2>👨‍💻 Profil Pembuat</h2>
+            <div class="profile-card">
+                <div class="profile-icon">👨‍🎓</div>
+                <div class="profile-name">Deva Dhanapala Haryono</div>
+                <div class="profile-info">
+                    <p>Siswa Kelas 10</p>
+                    <p>Sekolah Talenta Bandung</p>
+                </div>
+                <div>
+                    <span class="profile-badge">🎓 Kelas 10</span>
+                    <span class="profile-badge">📍 Bandung</span>
+                    <span class="profile-badge">💻 Developer</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- MISSION & VISION SECTION -->
+        <section>
+            <h2>🎯 Misi & Visi</h2>
+            <div class="mission-vision-container">
+                <div class="mission-box">
+                    <h3>🚀 Misi Kami</h3>
+                    <p>Memberikan akses materi informatika berkualitas tinggi yang mudah dipahami untuk semua siswa SMA, sehingga mereka dapat membangun fondasi yang kuat dalam pemrograman dan web development.</p>
+                </div>
+                <div class="vision-box">
+                    <h3>🌟 Visi Kami</h3>
+                    <p>Membantu siswa SMA memahami dasar-dasar informatika dengan cara yang mudah dan menyenangkan, menciptakan generasi yang siap menghadapi era digital.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURES SECTION -->
+        <section>
+            <h2>✨ Keunggulan Platform</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <div class="feature-title">Materi Ringkas & Jelas</div>
+                    <div class="feature-description">Konten dirancang khusus untuk siswa SMA Kelas 10 dengan penjelasan yang mudah dipahami, tanpa membingungkan dengan istilah-istilah teknis yang rumit.</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✏️</div>
+                    <div class="feature-title">Kuis Interaktif</div>
+                    <div class="feature-description">Latihan soal pilihan ganda dengan sistem scoring real-time untuk mengukur pemahaman Anda setiap saat, kapan pun dan dimana pun.</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <div class="feature-title">Mobile-Friendly</div>
+                    <div class="feature-description">Desain responsif yang sempurna di semua perangkat, dari smartphone hingga desktop. Belajar menjadi lebih fleksibel dan menyenangkan.</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <div class="feature-title">Fokus pada Pembelajaran</div>
+                    <div class="feature-description">Interface yang bersih dan minimalis membantu siswa fokus pada materi tanpa distraksi, menciptakan pengalaman belajar yang optimal.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT PLATFORM SECTION -->
+        <section>
+            <h2>💡 Tentang Platform Ini</h2>
+            <div style="background-color: var(--white); border-radius: 12px; padding: 2rem; box-shadow: var(--shadow); line-height: 1.8;">
+                <p style="margin-bottom: 1rem;">
+                    Platform <strong>Informatika SMA</strong> adalah sebuah website pembelajaran yang dikembangkan sebagai Proyek Akhir untuk memenuhi kebutuhan siswa SMA Kelas 10 dalam belajar informatika.
+                </p>
+                <p style="margin-bottom: 1rem;">
+                    Platform ini menyediakan materi pembelajaran yang terstruktur dan mudah dipahami tentang <strong>HTML Dasar</strong>, <strong>CSS Dasar</strong>, dan <strong>Coding Dasar</strong>. Setiap materi dirancang dengan mempertimbangkan tingkat pemahaman siswa SMA, sehingga konsep-konsep kompleks disajikan dengan cara yang sederhana dan menarik.
+                </p>
+                <p style="margin-bottom: 1rem;">
+                    Selain materi, platform ini juga dilengkapi dengan <strong>sistem kuis interaktif</strong> yang memungkinkan siswa untuk menguji pemahaman mereka secara langsung. Dengan fitur scoring real-time, siswa dapat segera mengetahui hasil belajar mereka dan mengidentifikasi area yang masih perlu ditingkatkan.
+                </p>
+                <p>
+                    Kami berkomitmen untuk membuat belajar informatika menjadi lebih mudah, menyenangkan, dan dapat diakses oleh semua siswa, sehingga mereka dapat mempersiapkan diri menghadapi perkembangan teknologi di era digital ini.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Informatika SMA. Platform Pembelajaran untuk Kelas 10.</p>
+        <p>Dikembangkan dengan ❤️ untuk pendidikan Indonesia</p>
+        <p><a href="../index.html">← Kembali ke Beranda</a></p>
+    </footer>
+
+    <script>
+        // HAMBURGER MENU TOGGLE
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        hamburgerBtn.addEventListener('click', () => {
+            hamburgerBtn.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // TUTUP MENU SAAT LINK DIKLIK
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburgerBtn.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
