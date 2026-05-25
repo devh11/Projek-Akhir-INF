@@ -51,7 +51,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 1.5rem;
+            padding: 1rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -60,721 +60,439 @@
             font-size: 1.5rem;
             font-weight: bold;
             color: var(--primary);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
         }
 
-        .logo-placeholder {
-            width: 40px;
-            height: 40px;
-            background-color: var(--primary);
-            border-radius: 8px;
+        .nav-links {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-weight: bold;
-        }
-
-        /* Menu Desktop */
-        .nav-menu {
-            display: none;
             gap: 2rem;
             list-style: none;
         }
 
-        .nav-menu a {
-            color: var(--text-dark);
+        .nav-links a {
             text-decoration: none;
+            color: var(--text-dark);
             font-weight: 500;
             transition: var(--transition);
-            padding: 0.5rem 0;
-            border-bottom: 2px solid transparent;
+            position: relative;
         }
 
-        .nav-menu a:hover,
-        .nav-menu a.active {
-            color: var(--primary);
-            border-bottom-color: var(--accent);
+        .nav-links a:hover {
+            color: var(--accent);
         }
 
-        /* Hamburger Menu Mobile */
-        .hamburger {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            background: none;
-            border: none;
+        .nav-links a.active {
+            color: var(--accent);
         }
 
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background-color: var(--primary);
-            transition: var(--transition);
-            border-radius: 2px;
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(10px, 10px);
-        }
-
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -7px);
-        }
-
-        /* Menu Mobile */
-        .mobile-menu {
-            display: none;
+        .nav-links a.active::after {
+            content: '';
             position: absolute;
-            top: 70px;
+            bottom: -5px;
             left: 0;
-            right: 0;
-            background-color: var(--white);
-            flex-direction: column;
-            gap: 0;
-            box-shadow: var(--shadow);
-            list-style: none;
-            animation: slideDown 0.3s ease;
+            width: 100%;
+            height: 3px;
+            background-color: var(--accent);
         }
 
-        .mobile-menu.active {
-            display: flex;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .mobile-menu li {
-            border-bottom: 1px solid var(--bg-light);
-        }
-
-        .mobile-menu a {
-            display: block;
-            color: var(--text-dark);
-            text-decoration: none;
-            font-weight: 500;
-            padding: 1rem 1.5rem;
-            transition: var(--transition);
-        }
-
-        .mobile-menu a:active {
-            background-color: var(--bg-light);
-            color: var(--primary);
-        }
-
-        /* ===== PAGE TITLE ===== */
-        .page-header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            color: var(--white);
-            padding: 2rem 1.5rem;
-            text-align: center;
-        }
-
-        .page-header h1 {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .page-header p {
-            font-size: 1rem;
-            opacity: 0.9;
-        }
-
-        /* ===== BACK TO HOME ===== */
-        .back-link {
-            display: inline-block;
-            padding: 1.5rem;
+        /* ===== KONTEN UTAMA ===== */
+        .container {
             max-width: 1200px;
             margin: 0 auto;
-            width: 100%;
+            padding: 2rem;
         }
 
-        .back-link a {
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
             color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
+            margin-bottom: 1rem;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            transition: var(--transition);
-        }
-
-        .back-link a:hover {
-            color: var(--primary-light);
+            justify-content: center;
             gap: 1rem;
         }
 
-        /* ===== MAIN CONTENT ===== */
-        main {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem 1.5rem;
+        .section-title span {
+            font-size: 2.5rem;
         }
 
-        /* ===== MATERI CARD ===== */
-        .materi-container {
+        .divider {
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin-bottom: 2rem;
+            border-radius: 2px;
+        }
+
+        /* ===== KARTU MATERI ===== */
+        .materials-grid {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             margin-bottom: 3rem;
         }
 
-        .materi-card {
-            background-color: var(--white);
+        .material-card {
+            background: var(--white);
             border-radius: 12px;
             padding: 2rem;
+            text-align: center;
             box-shadow: var(--shadow);
-            border-left: 5px solid var(--accent);
             transition: var(--transition);
+            cursor: pointer;
+            border: 2px solid transparent;
         }
 
-        .materi-card:hover {
-            box-shadow: 0 4px 16px rgba(26, 77, 122, 0.15);
-            transform: translateY(-2px);
+        .material-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(26, 77, 122, 0.15);
+            border-color: var(--accent);
         }
 
-        .materi-card.html-card {
-            border-left-color: #ff6b6b;
-        }
-
-        .materi-card.css-card {
-            border-left-color: #4ecdc4;
-        }
-
-        .materi-card.coding-card {
-            border-left-color: #95e1d3;
-        }
-
-        .materi-icon {
-            font-size: 2.5rem;
+        .material-card-icon {
+            font-size: 3rem;
             margin-bottom: 1rem;
         }
 
-        .materi-card h2 {
+        .material-card-title {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .material-card-desc {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* ===== KONTEN MATERI ===== */
+        .material-section {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            scroll-margin-top: 120px;
+        }
+
+        .material-section h3 {
             color: var(--primary);
             margin-bottom: 1rem;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .materi-card h3 {
+        .material-section h4 {
             color: var(--primary-light);
             margin-top: 1.5rem;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.8rem;
             font-size: 1.1rem;
-            border-bottom: 2px solid var(--bg-light);
-            padding-bottom: 0.5rem;
         }
 
-        .materi-card h3:first-of-type {
-            margin-top: 0;
-        }
-
-        .materi-card p {
-            margin-bottom: 1rem;
+        .material-section p {
             line-height: 1.8;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
         }
 
-        .materi-card ul {
-            margin-left: 1.5rem;
+        .material-section ul,
+        .material-section ol {
+            margin-left: 2rem;
             margin-bottom: 1rem;
         }
 
-        .materi-card ul li {
-            margin-bottom: 0.75rem;
-            line-height: 1.6;
+        .material-section li {
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
         }
 
-        .materi-card code {
-            background-color: var(--bg-light);
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-            font-family: 'Courier New', monospace;
-            color: #e74c3c;
-            font-weight: 500;
-        }
-
-        .code-block {
-            background-color: #2c3e50;
+        .code-example {
+            background: #2c3e50;
             color: #ecf0f1;
             padding: 1rem;
             border-radius: 8px;
             overflow-x: auto;
-            margin: 1rem 0;
+            margin-bottom: 1rem;
             font-family: 'Courier New', monospace;
             font-size: 0.9rem;
             line-height: 1.5;
         }
 
-        .highlight-box {
-            background-color: #fef5e7;
-            border-left: 4px solid #f39c12;
-            padding: 1rem;
-            margin: 1rem 0;
-            border-radius: 4px;
+        .highlight {
+            background: #fff3cd;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            color: #856404;
         }
 
-        .highlight-box strong {
-            color: #f39c12;
-        }
-
-        .success-box {
-            background-color: #d5f4e6;
-            border-left: 4px solid #27ae60;
-            padding: 1rem;
-            margin: 1rem 0;
-            border-radius: 4px;
-        }
-
-        .success-box strong {
-            color: #27ae60;
-        }
-
-        /* ===== FOOTER ===== */
-        footer {
-            background-color: var(--primary);
-            color: var(--white);
-            text-align: center;
-            padding: 2rem 1.5rem;
-            margin-top: 3rem;
-            border-top: 4px solid var(--accent);
-        }
-
-        footer p {
-            margin-bottom: 0.5rem;
-        }
-
-        footer a {
-            color: var(--accent);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* ===== RESPONSIVE DESKTOP ===== */
-        @media (min-width: 768px) {
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
             nav {
-                padding: 1rem 2rem;
+                flex-direction: column;
+                gap: 1rem;
             }
 
-            .hamburger {
-                display: none;
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
             }
 
-            .nav-menu {
-                display: flex;
+            .section-title {
+                font-size: 1.5rem;
             }
 
-            .mobile-menu {
-                display: none !important;
+            .section-title span {
+                font-size: 2rem;
             }
 
-            .page-header {
-                padding: 3rem 2rem;
+            .container {
+                padding: 1rem;
             }
 
-            .page-header h1 {
-                font-size: 2.5rem;
-            }
-
-            main {
-                padding: 3rem 2rem;
-            }
-
-            .materi-container {
-                gap: 2.5rem;
-            }
-
-            .materi-card {
-                padding: 2.5rem;
-            }
-
-            .materi-card h2 {
-                font-size: 1.8rem;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            nav {
-                padding: 1.5rem 2rem;
-            }
-
-            main {
-                padding: 4rem 2rem;
-            }
-
-            .page-header {
-                padding: 4rem 2rem;
-            }
-
-            .materi-card {
-                padding: 3rem;
+            .materials-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <!-- HEADER & NAVIGASI -->
+    <!-- ===== HEADER & NAVIGASI ===== -->
     <header>
         <nav>
-            <a href="../index.html" class="logo">
-                <div class="logo-placeholder">INF</div>
-                <span>Informatika SMA</span>
-            </a>
-            
-            <!-- Menu Desktop -->
-            <ul class="nav-menu">
+            <div class="logo">📚 NF Informatika SMA</div>
+            <ul class="nav-links">
                 <li><a href="../index.html">Beranda</a></li>
-                <li><a href="#" class="active">Materi</a></li>
-                <li><a href="../pages/latihan.html">Latihan</a></li>
-                <li><a href="../index.html#tentang">Tentang Kami</a></li>
+                <li><a href="materi.html" class="active">Materi</a></li>
+                <li><a href="latihan.html">Latihan</a></li>
+                <li><a href="tentang.html">Tentang Kami</a></li>
             </ul>
-
-            <!-- Hamburger Menu Mobile -->
-            <button class="hamburger" id="hamburgerBtn">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
         </nav>
-
-        <!-- Mobile Menu -->
-        <ul class="mobile-menu" id="mobileMenu">
-            <li><a href="../index.html">Beranda</a></li>
-            <li><a href="#" class="active">Materi</a></li>
-            <li><a href="../pages/latihan.html">Latihan</a></li>
-            <li><a href="../index.html#tentang">Tentang Kami</a></li>
-        </ul>
     </header>
 
-    <!-- PAGE HEADER -->
-    <section class="page-header">
-        <h1>📚 Materi Pembelajaran</h1>
-        <p>Pelajari dasar-dasar informatika dengan penjelasan yang ringkas dan mudah dipahami</p>
-    </section>
+    <!-- ===== KONTEN UTAMA ===== -->
+    <div class="container">
+        <!-- Judul Halaman -->
+        <div class="section-title">
+            <span>📚</span>
+            <h1>Materi Pembelajaran</h1>
+        </div>
+        <div class="divider"></div>
 
-    <!-- BACK LINK -->
-    <div class="back-link">
-        <a href="../index.html">← Kembali ke Beranda</a>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <main>
-        <!-- MATERI CARDS CONTAINER -->
-        <div class="materi-container">
-            <!-- CARD 1: HTML DASAR -->
-            <div class="materi-card html-card">
-                <div class="materi-icon">🏗️</div>
-                <h2>HTML Dasar: Apa itu Tag dan Struktur Halaman</h2>
-
-                <h3>🤔 Apa itu HTML?</h3>
-                <p>HTML (HyperText Markup Language) adalah bahasa yang digunakan untuk membuat struktur halaman web. Bayangkan HTML seperti <strong>tulang atau kerangka</strong> dari sebuah rumah. HTML memberi tahu browser (Chrome, Firefox, Safari) bagian-bagian apa saja yang ada di halaman web kita.</p>
-
-                <h3>🏷️ Apa itu Tag HTML?</h3>
-                <p>Tag adalah instruksi khusus dalam HTML yang ditulis di antara tanda <code>&lt;</code> dan <code>&gt;</code>. Setiap tag memiliki tujuan yang berbeda.</p>
-                
-                <p><strong>Contoh tag-tag penting:</strong></p>
-                <ul>
-                    <li><code>&lt;h1&gt;</code> - Membuat judul besar</li>
-                    <li><code>&lt;p&gt;</code> - Membuat paragraf (teks biasa)</li>
-                    <li><code>&lt;a&gt;</code> - Membuat hyperlink (tautan)</li>
-                    <li><code>&lt;img&gt;</code> - Menampilkan gambar</li>
-                    <li><code>&lt;button&gt;</code> - Membuat tombol</li>
-                </ul>
-
-                <div class="highlight-box">
-                    <strong>💡 Tips:</strong> Sebagian besar tag HTML harus dibuka dan ditutup. Contoh: <code>&lt;p&gt;Isi teks&lt;/p&gt;</code>. Tag penutup selalu diawali dengan garis miring (<code>/</code>).
-                </div>
-
-                <h3>🏘️ Struktur Dasar HTML</h3>
-                <p>Setiap halaman HTML memiliki struktur standar yang sama:</p>
-                
-                <div class="code-block">
-&lt;!DOCTYPE html&gt;
-&lt;html lang="id"&gt;
-  &lt;head&gt;
-    &lt;title&gt;Judul Halaman&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;h1&gt;Selamat Datang!&lt;/h1&gt;
-    &lt;p&gt;Ini adalah paragraf pertama saya.&lt;/p&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-                </div>
-
-                <p><strong>Penjelasan struktur:</strong></p>
-                <ul>
-                    <li><code>&lt;!DOCTYPE html&gt;</code> - Memberi tahu browser ini adalah file HTML</li>
-                    <li><code>&lt;html&gt;</code> - Tag pembungkus utama (akar dari semua elemen)</li>
-                    <li><code>&lt;head&gt;</code> - Tempat informasi halaman (judul, link CSS, dll)</li>
-                    <li><code>&lt;body&gt;</code> - Tempat konten yang akan ditampilkan di layar</li>
-                </ul>
-
-                <div class="success-box">
-                    <strong>✅ Ingat:</strong> HTML hanya mengatur struktur. Untuk membuat halaman terlihat cantik, kita memerlukan CSS!
-                </div>
+        <!-- Grid Pilihan Materi -->
+        <div class="materials-grid">
+            <div class="material-card" onclick="scrollToSection('html-section')">
+                <div class="material-card-icon">🏗️</div>
+                <div class="material-card-title">HTML Dasar</div>
+                <div class="material-card-desc">Pelajari struktur dasar halaman web</div>
             </div>
-
-            <!-- CARD 2: CSS DASAR -->
-            <div class="materi-card css-card">
-                <div class="materi-icon">🎨</div>
-                <h2>CSS Dasar: Memberi Warna dan Mengatur Ukuran Teks</h2>
-
-                <h3>🤔 Apa itu CSS?</h3>
-                <p>CSS (Cascading Style Sheets) adalah bahasa untuk membuat halaman web terlihat lebih cantik dan menarik. Jika HTML adalah kerangka rumah, maka CSS adalah cat, furnitur, dan dekorasi. CSS mengubah tampilan visual dari elemen HTML.</p>
-
-                <h3>🎯 3 Cara Menulis CSS</h3>
-                <p>Ada 3 cara untuk menambahkan CSS ke halaman HTML:</p>
-                <ul>
-                    <li><strong>1. Internal CSS</strong> - Ditulis di dalam tag <code>&lt;style&gt;</code> di file HTML</li>
-                    <li><strong>2. External CSS</strong> - Ditulis di file terpisah (file.css)</li>
-                    <li><strong>3. Inline CSS</strong> - Ditulis langsung di dalam tag HTML (tidak disarankan)</li>
-                </ul>
-
-                <h3>🎨 Memberi Warna dengan CSS</h3>
-                <p>Untuk memberi warna, gunakan properti <code>color</code> (untuk teks) atau <code>background-color</code> (untuk latar belakang).</p>
-
-                <div class="code-block">
-/* Mengubah warna teks menjadi biru */
-p {
-  color: blue;
-}
-
-/* Mengubah latar belakang menjadi kuning */
-body {
-  background-color: yellow;
-}
-
-/* Menggunakan kode warna heksadesimal */
-h1 {
-  color: #1a4d7a;
-}
-                </div>
-
-                <p><strong>Cara menulis warna:</strong></p>
-                <ul>
-                    <li><strong>Nama warna:</strong> <code>red</code>, <code>blue</code>, <code>green</code>, dll</li>
-                    <li><strong>Heksadesimal:</strong> <code>#FF5733</code> (sistem 6 digit untuk warna yang lebih presisi)</li>
-                    <li><strong>RGB:</strong> <code>rgb(255, 87, 51)</code> (Red, Green, Blue)</li>
-                </ul>
-
-                <h3>📏 Mengatur Ukuran Teks</h3>
-                <p>Gunakan properti <code>font-size</code> untuk mengubah ukuran teks.</p>
-
-                <div class="code-block">
-/* Teks besar */
-h1 {
-  font-size: 32px;
-}
-
-/* Teks sedang */
-p {
-  font-size: 16px;
-}
-
-/* Teks kecil */
-.catatan {
-  font-size: 12px;
-}
-                </div>
-
-                <p><strong>Satuan ukuran teks:</strong></p>
-                <ul>
-                    <li><code>px</code> - Pixel (ukuran tetap) - paling umum</li>
-                    <li><code>em</code> - Relatif terhadap ukuran font induk</li>
-                    <li><code>rem</code> - Relatif terhadap ukuran font root</li>
-                    <li><code>%</code> - Persentase</li>
-                </ul>
-
-                <div class="highlight-box">
-                    <strong>💡 Tips Desain:</strong> Gunakan ukuran besar untuk judul (32px-48px), sedang untuk subjudul (20px-24px), dan normal untuk teks biasa (14px-16px).
-                </div>
-
-                <h3>🌈 Contoh Lengkap</h3>
-                <div class="code-block">
-&lt;style&gt;
-  h1 {
-    color: #1a4d7a;
-    font-size: 36px;
-  }
-  
-  p {
-    color: #2c3e50;
-    font-size: 16px;
-  }
-  
-  body {
-    background-color: #f8f9fa;
-  }
-&lt;/style&gt;
-                </div>
-
-                <div class="success-box">
-                    <strong>✅ Ingat:</strong> CSS membuat halaman terlihat bagus, tapi HTML tetap diperlukan sebagai struktur dasar!
-                </div>
+            <div class="material-card" onclick="scrollToSection('css-section')">
+                <div class="material-card-icon">🎨</div>
+                <div class="material-card-title">CSS Dasar</div>
+                <div class="material-card-desc">Belajar mempercantik tampilan website</div>
             </div>
-
-            <!-- CARD 3: CODING DASAR -->
-            <div class="materi-card coding-card">
-                <div class="materi-icon">💻</div>
-                <h2>Coding Dasar: Variabel dan If-Else</h2>
-
-                <h3>🤔 Apa itu Coding/Pemrograman?</h3>
-                <p>Coding adalah proses menulis instruksi untuk komputer agar melakukan sesuatu. Bayangkan Anda memberi perintah kepada robot untuk membuat teh - Anda harus menjelaskan setiap langkah dengan jelas. Begitu juga dengan coding!</p>
-
-                <h3>📦 Apa itu Variabel?</h3>
-                <p>Variabel adalah tempat penyimpanan data sementara dalam program. Seperti kotak yang dapat menampung nilai atau informasi.</p>
-
-                <div class="code-block">
-// Membuat variabel
-let nama = "Budi";
-let umur = 16;
-let nilai = 85.5;
-
-// Menggunakan variabel
-console.log(nama);  // Output: Budi
-console.log(umur);  // Output: 16
-                </div>
-
-                <p><strong>Jenis-jenis data yang bisa disimpan:</strong></p>
-                <ul>
-                    <li><strong>String (Teks):</strong> <code>"Halo"</code> atau <code>'Dunia'</code></li>
-                    <li><strong>Number (Angka):</strong> <code>42</code> atau <code>3.14</code></li>
-                    <li><strong>Boolean (Benar/Salah):</strong> <code>true</code> atau <code>false</code></li>
-                </ul>
-
-                <div class="highlight-box">
-                    <strong>💡 Tips Penamaan:</strong> Nama variabel sebaiknya deskriptif, misalnya: <code>umurSiswa</code>, <code>hargaBuku</code>, bukan <code>x</code> atau <code>y</code>.
-                </div>
-
-                <h3>🔀 Apa itu If-Else?</h3>
-                <p>If-Else adalah cara program untuk membuat keputusan berdasarkan kondisi. Jika kondisi benar (true), jalankan kode A. Jika salah (false), jalankan kode B.</p>
-
-                <p><strong>Struktur dasar If-Else:</strong></p>
-                <div class="code-block">
-if (kondisi) {
-  // Kode yang dijalankan jika kondisi TRUE
-} else {
-  // Kode yang dijalankan jika kondisi FALSE
-}
-                </div>
-
-                <h3>📌 Contoh Praktis If-Else</h3>
-                <p><strong>Kasus: Memeriksa apakah siswa lulus atau tidak</strong></p>
-                
-                <div class="code-block">
-let nilai = 75;
-
-if (nilai >= 70) {
-  console.log("Nilai Anda: LULUS ✓");
-} else {
-  console.log("Nilai Anda: TIDAK LULUS ✗");
-}
-
-// Output: Nilai Anda: LULUS ✓
-                </div>
-
-                <p><strong>Penjelasan:</strong></p>
-                <ul>
-                    <li>Variabel <code>nilai</code> menyimpan angka 75</li>
-                    <li>Kondisi <code>nilai >= 70</code> berarti "apakah nilai lebih besar atau sama dengan 70?"</li>
-                    <li>Karena 75 lebih besar dari 70, kondisi TRUE, sehingga pesan "LULUS ✓" akan ditampilkan</li>
-                </ul>
-
-                <h3>🔢 Operator Perbandingan</h3>
-                <p>Operator ini digunakan dalam kondisi If-Else:</p>
-                <ul>
-                    <li><code>==</code> - Sama dengan</li>
-                    <li><code>!=</code> - Tidak sama dengan</li>
-                    <li><code>&gt;</code> - Lebih besar dari</li>
-                    <li><code>&lt;</code> - Lebih kecil dari</li>
-                    <li><code>&gt;=</code> - Lebih besar atau sama dengan</li>
-                    <li><code>&lt;=</code> - Lebih kecil atau sama dengan</li>
-                </ul>
-
-                <h3>🔗 If-Else Bertingkat (Else If)</h3>
-                <p><strong>Kasus: Mengkonversi nilai angka menjadi grade</strong></p>
-
-                <div class="code-block">
-let nilai = 85;
-
-if (nilai >= 90) {
-  console.log("Grade: A");
-} else if (nilai >= 80) {
-  console.log("Grade: B");
-} else if (nilai >= 70) {
-  console.log("Grade: C");
-} else {
-  console.log("Grade: D");
-}
-
-// Output: Grade: B
-                </div>
-
-                <p><strong>Alur program:</strong></p>
-                <ul>
-                    <li>Cek: Apakah 85 >= 90? <strong>TIDAK</strong></li>
-                    <li>Cek: Apakah 85 >= 80? <strong>YA</strong> ✓ → Output "Grade: B"</li>
-                    <li>Berhenti (tidak melanjutkan cek yang lain)</li>
-                </ul>
-
-                <div class="success-box">
-                    <strong>✅ Ingat:</strong> If-Else adalah fondasi dari logika pemrograman. Semakin baik Anda memahami if-else, semakin mudah belajar bahasa pemrograman lainnya!
-                </div>
-
-                <h3>🎯 Rangkuman Coding Dasar</h3>
-                <ul>
-                    <li><strong>Variabel:</strong> Tempat menyimpan data</li>
-                    <li><strong>If-Else:</strong> Membuat keputusan berdasarkan kondisi</li>
-                    <li><strong>Operator:</strong> Simbol untuk membandingkan atau melakukan operasi</li>
-                    <li><strong>Logika:</strong> Berpikir step-by-step untuk menyelesaikan masalah</li>
-                </ul>
+            <div class="material-card" onclick="scrollToSection('coding-section')">
+                <div class="material-card-icon">💻</div>
+                <div class="material-card-title">Coding Dasar</div>
+                <div class="material-card-desc">Pahami logika pemrograman sederhana</div>
             </div>
         </div>
-    </main>
 
-    <!-- FOOTER -->
-    <footer>
-        <p>&copy; 2026 Informatika SMA. Platform Pembelajaran untuk Kelas 10.</p>
-        <p>Dikembangkan dengan ❤️ untuk pendidikan Indonesia</p>
-        <p><a href="../index.html">← Kembali ke Atas</a></p>
-    </footer>
+        <!-- ===== HTML DASAR ===== -->
+        <section id="html-section" class="material-section">
+            <h3>🏗️ HTML Dasar</h3>
+            <p>HTML (HyperText Markup Language) adalah bahasa markup yang digunakan untuk membuat struktur konten di halaman web. HTML menyediakan elemen-elemen yang memberitahu browser bagaimana menampilkan konten.</p>
+
+            <h4>Apa itu HTML?</h4>
+            <p>HTML adalah fondasi dari setiap halaman web. Dengan HTML, kita mendefinisikan elemen-elemen seperti paragraf, heading, link, gambar, dan banyak lagi.</p>
+
+            <h4>Struktur Dasar HTML</h4>
+            <p>Setiap dokumen HTML memiliki struktur dasar yang sama:</p>
+            <div class="code-example">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="id"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Judul Halaman&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Konten halaman --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+            </div>
+
+            <h4>Tag-Tag Umum HTML</h4>
+            <ul>
+                <li><span class="highlight">&lt;h1&gt; - &lt;h6&gt;</span>: Heading (judul) dari level 1 hingga 6</li>
+                <li><span class="highlight">&lt;p&gt;</span>: Paragraf teks</li>
+                <li><span class="highlight">&lt;a&gt;</span>: Link/tautan</li>
+                <li><span class="highlight">&lt;img&gt;</span>: Gambar</li>
+                <li><span class="highlight">&lt;ul&gt; &lt;ol&gt;</span>: Daftar tidak terurut dan terurut</li>
+                <li><span class="highlight">&lt;div&gt;</span>: Container/pembungkus konten</li>
+                <li><span class="highlight">&lt;button&gt;</span>: Tombol interaktif</li>
+                <li><span class="highlight">&lt;form&gt;</span>: Formulir input data</li>
+            </ul>
+
+            <h4>Contoh Penggunaan Tag HTML</h4>
+            <div class="code-example">
+&lt;h1&gt;Selamat Datang&lt;/h1&gt;
+&lt;p&gt;Ini adalah paragraf pertama saya.&lt;/p&gt;
+&lt;a href="https://example.com"&gt;Klik di sini&lt;/a&gt;
+&lt;img src="gambar.jpg" alt="Deskripsi Gambar"&gt;
+            </div>
+        </section>
+
+        <!-- ===== CSS DASAR ===== -->
+        <section id="css-section" class="material-section">
+            <h3>🎨 CSS Dasar</h3>
+            <p>CSS (Cascading Style Sheets) adalah bahasa yang digunakan untuk mengatur gaya dan tata letak elemen-elemen HTML. CSS memungkinkan kita membuat halaman web yang lebih menarik dan responsif.</p>
+
+            <h4>Apa itu CSS?</h4>
+            <p>CSS mengontrol bagaimana elemen HTML ditampilkan. Dengan CSS, kita dapat mengatur warna, ukuran, posisi, dan banyak aspek visual lainnya.</p>
+
+            <h4>Tiga Cara Menggunakan CSS</h4>
+            <ol>
+                <li><strong>Inline CSS</strong>: Langsung di tag HTML</li>
+                <li><strong>Internal CSS</strong>: Di tag &lt;style&gt; dalam &lt;head&gt;</li>
+                <li><strong>External CSS</strong>: File .css terpisah</li>
+            </ol>
+
+            <h4>Contoh Inline CSS</h4>
+            <div class="code-example">
+&lt;h1 style="color: blue; font-size: 24px;"&gt;
+    Judul Berwarna Biru
+&lt;/h1&gt;
+            </div>
+
+            <h4>Contoh Internal CSS</h4>
+            <div class="code-example">
+&lt;style&gt;
+    h1 {
+        color: blue;
+        font-size: 24px;
+    }
+    p {
+        color: gray;
+        line-height: 1.6;
+    }
+&lt;/style&gt;
+            </div>
+
+            <h4>Properti CSS Umum</h4>
+            <ul>
+                <li><span class="highlight">color</span>: Warna teks</li>
+                <li><span class="highlight">background-color</span>: Warna latar belakang</li>
+                <li><span class="highlight">font-size</span>: Ukuran font</li>
+                <li><span class="highlight">margin</span>: Jarak luar elemen</li>
+                <li><span class="highlight">padding</span>: Jarak dalam elemen</li>
+                <li><span class="highlight">width</span> dan <span class="highlight">height</span>: Lebar dan tinggi</li>
+                <li><span class="highlight">border</span>: Garis tepi</li>
+                <li><span class="highlight">text-align</span>: Perataan teks</li>
+            </ul>
+
+            <h4>Contoh Styling Elemen</h4>
+            <div class="code-example">
+.card {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+            </div>
+        </section>
+
+        <!-- ===== CODING DASAR ===== -->
+        <section id="coding-section" class="material-section">
+            <h3>💻 Coding Dasar (JavaScript)</h3>
+            <p>JavaScript adalah bahasa pemrograman yang memungkinkan halaman web menjadi interaktif. Dengan JavaScript, kita dapat merespons tindakan pengguna dan memodifikasi halaman secara dinamis.</p>
+
+            <h4>Apa itu JavaScript?</h4>
+            <p>JavaScript dijalankan di browser pengguna, memungkinkan halaman web merespons input pengguna secara real-time. JavaScript adalah inti dari interaktivitas web modern.</p>
+
+            <h4>Cara Menambahkan JavaScript</h4>
+            <ol>
+                <li>Inline JavaScript di dalam tag HTML</li>
+                <li>Internal JavaScript di tag &lt;script&gt;</li>
+                <li>External JavaScript di file .js terpisah</li>
+            </ol>
+
+            <h4>Contoh Variabel dan Tipe Data</h4>
+            <div class="code-example">
+// Deklarasi variabel
+let nama = "Budi";        // String
+let usia = 16;            // Number
+let aktif = true;         // Boolean
+let hobi = ["Coding", "Gaming", "Baca"];  // Array
+
+console.log(nama);  // Output: Budi
+            </div>
+
+            <h4>Contoh Fungsi</h4>
+            <div class="code-example">
+function sapa(nama) {
+    return "Halo, " + nama + "!";
+}
+
+console.log(sapa("Rina"));  // Output: Halo, Rina!
+            </div>
+
+            <h4>Contoh Kondisi (If-Else)</h4>
+            <div class="code-example">
+let nilai = 85;
+
+if (nilai >= 80) {
+    console.log("Grade A - Excellent!");
+} else if (nilai >= 70) {
+    console.log("Grade B - Good");
+} else {
+    console.log("Grade C - Pass");
+}
+            </div>
+
+            <h4>Contoh Loop (For)</h4>
+            <div class="code-example">
+// Loop sederhana
+for (let i = 1; i <= 5; i++) {
+    console.log("Perulangan ke-" + i);
+}
+
+// Loop array
+let buah = ["Apel", "Mangga", "Pisang"];
+for (let i = 0; i < buah.length; i++) {
+    console.log(buah[i]);
+}
+            </div>
+
+            <h4>Konsep Penting dalam Coding</h4>
+            <ul>
+                <li><strong>Variabel</strong>: Tempat menyimpan data</li>
+                <li><strong>Tipe Data</strong>: String, Number, Boolean, Array, Object</li>
+                <li><strong>Fungsi</strong>: Blok kode yang dapat digunakan kembali</li>
+                <li><strong>Kondisi</strong>: Membuat keputusan berdasarkan kondisi</li>
+                <li><strong>Loop</strong>: Mengulang kode berkali-kali</li>
+                <li><strong>Array</strong>: Koleksi data dalam satu variabel</li>
+                <li><strong>Object</strong>: Koleksi properti dan metode</li>
+            </ul>
+        </section>
+    </div>
 
     <script>
-        // HAMBURGER MENU TOGGLE
-        const hamburgerBtn = document.getElementById('hamburgerBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
 
-        hamburgerBtn.addEventListener('click', () => {
-            hamburgerBtn.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-        });
-
-        // TUTUP MENU SAAT LINK DIKLIK
-        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-        mobileMenuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                hamburgerBtn.classList.remove('active');
-                mobileMenu.classList.remove('active');
-            });
+        // Set active nav link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            if (link.getAttribute('href') === 'materi.html' || link.getAttribute('href') === window.location.pathname) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
         });
     </script>
 </body>
