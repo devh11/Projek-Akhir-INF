@@ -49,7 +49,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 1.5rem;
+            padding: 1rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -58,551 +58,432 @@
             font-size: 1.5rem;
             font-weight: bold;
             color: var(--primary);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
         }
 
-        .logo-placeholder {
-            width: 40px;
-            height: 40px;
-            background-color: var(--primary);
-            border-radius: 8px;
+        .nav-links {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-weight: bold;
-        }
-
-        /* Menu Desktop */
-        .nav-menu {
-            display: none;
             gap: 2rem;
             list-style: none;
         }
 
-        .nav-menu a {
-            color: var(--text-dark);
+        .nav-links a {
             text-decoration: none;
+            color: var(--text-dark);
             font-weight: 500;
             transition: var(--transition);
-            padding: 0.5rem 0;
-            border-bottom: 2px solid transparent;
+            position: relative;
         }
 
-        .nav-menu a:hover,
-        .nav-menu a.active {
-            color: var(--primary);
-            border-bottom-color: var(--accent);
+        .nav-links a:hover {
+            color: var(--accent);
         }
 
-        /* Hamburger Menu Mobile */
-        .hamburger {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            background: none;
-            border: none;
+        .nav-links a.active {
+            color: var(--accent);
         }
 
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background-color: var(--primary);
-            transition: var(--transition);
-            border-radius: 2px;
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(10px, 10px);
-        }
-
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -7px);
-        }
-
-        /* Menu Mobile */
-        .mobile-menu {
-            display: none;
+        .nav-links a.active::after {
+            content: '';
             position: absolute;
-            top: 70px;
+            bottom: -5px;
             left: 0;
-            right: 0;
-            background-color: var(--white);
-            flex-direction: column;
-            gap: 0;
-            box-shadow: var(--shadow);
-            list-style: none;
-            animation: slideDown 0.3s ease;
+            width: 100%;
+            height: 3px;
+            background-color: var(--accent);
         }
 
-        .mobile-menu.active {
-            display: flex;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .mobile-menu li {
-            border-bottom: 1px solid var(--bg-light);
-        }
-
-        .mobile-menu a {
-            display: block;
-            color: var(--text-dark);
-            text-decoration: none;
-            font-weight: 500;
-            padding: 1rem 1.5rem;
-            transition: var(--transition);
-        }
-
-        .mobile-menu a:active {
-            background-color: var(--bg-light);
-            color: var(--primary);
-        }
-
-        /* ===== PAGE HEADER ===== */
-        .page-header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            color: var(--white);
-            padding: 2rem 1.5rem;
-            text-align: center;
-        }
-
-        .page-header h1 {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .page-header p {
-            font-size: 1rem;
-            opacity: 0.9;
-        }
-
-        /* ===== BACK LINK ===== */
-        .back-link {
-            display: inline-block;
-            padding: 1.5rem;
+        /* ===== KONTEN UTAMA ===== */
+        .container {
             max-width: 1200px;
             margin: 0 auto;
-            width: 100%;
+            padding: 2rem;
         }
 
-        .back-link a {
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
             color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
+            margin-bottom: 1rem;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            transition: var(--transition);
-        }
-
-        .back-link a:hover {
-            color: var(--primary-light);
+            justify-content: center;
             gap: 1rem;
         }
 
-        /* ===== MAIN CONTENT ===== */
-        main {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem 1.5rem;
+        .section-title span {
+            font-size: 2.5rem;
         }
 
-        /* ===== SECTION ===== */
-        section {
-            margin-bottom: 3rem;
+        .divider {
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin-bottom: 2rem;
+            border-radius: 2px;
         }
 
-        section h2 {
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            border-bottom: 3px solid var(--accent);
-            padding-bottom: 0.75rem;
+        /* ===== MENU NAVIGASI TENTANG ===== */
+        .about-nav {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
-        /* ===== PROFILE CARD ===== */
-        .profile-card {
+        .about-nav-btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 8px;
             background-color: var(--white);
+            color: var(--primary);
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid var(--primary);
+        }
+
+        .about-nav-btn:hover,
+        .about-nav-btn.active {
+            background-color: var(--primary);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        /* ===== KONTEN TENTANG ===== */
+        .about-section {
+            background: var(--white);
             border-radius: 12px;
             padding: 2rem;
+            margin-bottom: 2rem;
             box-shadow: var(--shadow);
-            text-align: center;
-            margin-bottom: 2rem;
+            scroll-margin-top: 120px;
         }
 
-        .profile-icon {
-            font-size: 4rem;
+        .about-section h3 {
+            color: var(--primary);
             margin-bottom: 1rem;
-        }
-
-        .profile-name {
             font-size: 1.5rem;
-            color: var(--primary);
-            font-weight: bold;
-            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .profile-info {
-            color: var(--text-dark);
-            margin-bottom: 1rem;
+        .about-section h4 {
+            color: var(--primary-light);
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .about-section p {
             line-height: 1.8;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
         }
 
-        .profile-badge {
-            display: inline-block;
-            background-color: var(--accent);
-            color: var(--primary);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            margin: 0.5rem;
+        .about-section ul {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
         }
 
-        /* ===== FEATURE GRID ===== */
-        .feature-grid {
+        .about-section li {
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        /* ===== PROFILE SECTION ===== */
+        .profile-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
             margin-bottom: 2rem;
+        }
+
+        .profile-card {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .profile-card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .profile-card h4 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            color: var(--white);
+        }
+
+        .profile-card p {
+            margin-bottom: 0;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+        }
+
+        /* ===== FEATURE CARDS ===== */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
         }
 
         .feature-card {
-            background-color: var(--white);
-            border-radius: 12px;
-            padding: 1.5rem;
-            box-shadow: var(--shadow);
-            border-left: 5px solid var(--accent);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .feature-title {
-            font-size: 1.1rem;
-            color: var(--primary);
-            font-weight: bold;
-            margin-bottom: 0.75rem;
-        }
-
-        .feature-description {
-            color: var(--text-dark);
-            line-height: 1.6;
-        }
-
-        /* ===== MISSION & VISION ===== */
-        .mission-vision-container {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .mission-box,
-        .vision-box {
-            background-color: var(--white);
-            border-radius: 12px;
+            background: var(--white);
             padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent);
             box-shadow: var(--shadow);
-        }
-
-        .mission-box {
-            border-top: 5px solid #f39c12;
-        }
-
-        .vision-box {
-            border-top: 5px solid var(--success);
-        }
-
-        .mission-box h3,
-        .vision-box h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            font-weight: bold;
-        }
-
-        .mission-box h3 {
-            color: #f39c12;
-        }
-
-        .vision-box h3 {
-            color: var(--success);
-        }
-
-        .mission-box p,
-        .vision-box p {
-            color: var(--text-dark);
-            line-height: 1.8;
-        }
-
-        /* ===== FOOTER ===== */
-        footer {
-            background-color: var(--primary);
-            color: var(--white);
-            text-align: center;
-            padding: 2rem 1.5rem;
-            margin-top: 3rem;
-            border-top: 4px solid var(--accent);
-        }
-
-        footer p {
-            margin-bottom: 0.5rem;
-        }
-
-        footer a {
-            color: var(--accent);
-            text-decoration: none;
             transition: var(--transition);
         }
 
-        footer a:hover {
-            text-decoration: underline;
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(26, 77, 122, 0.15);
         }
 
-        /* ===== RESPONSIVE DESKTOP ===== */
-        @media (min-width: 768px) {
+        .feature-card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h4 {
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
             nav {
-                padding: 1rem 2rem;
+                flex-direction: column;
+                gap: 1rem;
             }
 
-            .hamburger {
-                display: none;
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
             }
 
-            .nav-menu {
-                display: flex;
+            .section-title {
+                font-size: 1.5rem;
             }
 
-            .mobile-menu {
-                display: none !important;
-            }
-
-            .page-header {
-                padding: 3rem 2rem;
-            }
-
-            .page-header h1 {
-                font-size: 2.5rem;
-            }
-
-            main {
-                padding: 3rem 2rem;
-            }
-
-            .profile-card {
-                padding: 2.5rem;
-            }
-
-            .profile-icon {
-                font-size: 5rem;
-            }
-
-            .feature-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .mission-vision-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            section h2 {
+            .section-title span {
                 font-size: 2rem;
             }
-        }
 
-        @media (min-width: 1024px) {
-            nav {
-                padding: 1.5rem 2rem;
+            .container {
+                padding: 1rem;
             }
 
-            main {
-                padding: 4rem 2rem;
+            .about-nav {
+                flex-direction: column;
             }
 
-            .profile-card {
-                padding: 3rem;
-                max-width: 600px;
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .feature-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .about-nav-btn {
+                width: 100%;
             }
         }
     </style>
 </head>
 <body>
-    <!-- HEADER & NAVIGASI -->
+    <!-- ===== HEADER & NAVIGASI ===== -->
     <header>
         <nav>
-            <a href="../index.html" class="logo">
-                <div class="logo-placeholder">INF</div>
-                <span>Informatika SMA</span>
-            </a>
-            
-            <!-- Menu Desktop -->
-            <ul class="nav-menu">
+            <div class="logo">📚 NF Informatika SMA</div>
+            <ul class="nav-links">
                 <li><a href="../index.html">Beranda</a></li>
                 <li><a href="materi.html">Materi</a></li>
                 <li><a href="latihan.html">Latihan</a></li>
-                <li><a href="#" class="active">Tentang Kami</a></li>
+                <li><a href="tentang.html" class="active">Tentang Kami</a></li>
             </ul>
-
-            <!-- Hamburger Menu Mobile -->
-            <button class="hamburger" id="hamburgerBtn">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
         </nav>
-
-        <!-- Mobile Menu -->
-        <ul class="mobile-menu" id="mobileMenu">
-            <li><a href="../index.html">Beranda</a></li>
-            <li><a href="materi.html">Materi</a></li>
-            <li><a href="latihan.html">Latihan</a></li>
-            <li><a href="#" class="active">Tentang Kami</a></li>
-        </ul>
     </header>
 
-    <!-- PAGE HEADER -->
-    <section class="page-header">
-        <h1>ℹ️ Tentang Kami</h1>
-        <p>Mengenal lebih dekat tentang platform pembelajaran Informatika SMA</p>
-    </section>
+    <!-- ===== KONTEN UTAMA ===== -->
+    <div class="container">
+        <!-- Judul Halaman -->
+        <div class="section-title">
+            <span>ℹ️</span>
+            <h1>Tentang Kami</h1>
+        </div>
+        <div class="divider"></div>
 
-    <!-- BACK LINK -->
-    <div class="back-link">
-        <a href="../index.html">← Kembali ke Beranda</a>
+        <!-- Menu Navigasi Tentang -->
+        <div class="about-nav">
+            <button class="about-nav-btn active" onclick="scrollToSection('profil-section')">👤 Profil</button>
+            <button class="about-nav-btn" onclick="scrollToSection('misi-section')">🎯 Misi & Visi</button>
+            <button class="about-nav-btn" onclick="scrollToSection('fitur-section')">✨ Fitur Platform</button>
+            <button class="about-nav-btn" onclick="scrollToSection('kontak-section')">📞 Kontak</button>
+        </div>
+
+        <!-- ===== PROFIL ===== -->
+        <section id="profil-section" class="about-section">
+            <h3>👤 Profil Platform</h3>
+            <p>Platform pembelajaran Informatika SMA adalah solusi inovatif yang dirancang khusus untuk membantu siswa kelas 10, 11, dan 12 memahami konsep-konsep dasar pemrograman dan teknologi informasi.</p>
+
+            <h4>Tentang Kami</h4>
+            <p>Kami adalah tim yang berdedikasi untuk meningkatkan kualitas pendidikan informatika di sekolah menengah atas. Platform ini dikembangkan dengan mempertimbangkan kebutuhan siswa modern yang memerlukan pembelajaran interaktif dan mudah dipahami.</p>
+
+            <h4>Statistik Platform</h4>
+            <div class="profile-grid">
+                <div class="profile-card">
+                    <div class="profile-card-icon">📚</div>
+                    <h4>Materi Lengkap</h4>
+                    <p>HTML, CSS, dan Coding dasar untuk pemula</p>
+                </div>
+                <div class="profile-card">
+                    <div class="profile-card-icon">✅</div>
+                    <h4>Latihan Interaktif</h4>
+                    <p>Kuis dan latihan untuk mengukur pemahaman</p>
+                </div>
+                <div class="profile-card">
+                    <div class="profile-card-icon">🚀</div>
+                    <h4>Teknologi Modern</h4>
+                    <p>Antarmuka responsif dan user-friendly</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== MISI & VISI ===== -->
+        <section id="misi-section" class="about-section">
+            <h3>🎯 Misi & Visi</h3>
+
+            <h4>Visi Kami</h4>
+            <p>Menjadi platform pembelajaran informatika yang terdepan dalam mendidik generasi muda Indonesia tentang pentingnya teknologi dan pemrograman dalam era digital.</p>
+
+            <h4>Misi Kami</h4>
+            <ul>
+                <li><strong>Memberdayakan Siswa:</strong> Memberikan akses mudah ke materi pembelajaran berkualitas tinggi</li>
+                <li><strong>Meningkatkan Kompetensi:</strong> Mengembangkan keterampilan pemrograman dasar siswa melalui latihan interaktif</li>
+                <li><strong>Mendorong Inovasi:</strong> Memotivasi siswa untuk berpikir kreatif dan menciptakan solusi teknologi</li>
+                <li><strong>Membangun Komunitas:</strong> Menciptakan ekosistem pembelajaran yang kolaboratif dan suportif</li>
+                <li><strong>Aksesibilitas:</strong> Memastikan setiap siswa dapat mengakses platform dari mana saja dan kapan saja</li>
+            </ul>
+
+            <h4>Nilai-Nilai Kami</h4>
+            <ul>
+                <li>🎓 <strong>Edukasi Berkualitas:</strong> Konten yang akurat dan relevan</li>
+                <li>💡 <strong>Inovasi:</strong> Terus berkembang mengikuti perkembangan teknologi</li>
+                <li>🤝 <strong>Kolaborasi:</strong> Bekerja sama dengan guru dan siswa</li>
+                <li>♿ <strong>Inklusivitas:</strong> Accessible untuk semua kalangan siswa</li>
+            </ul>
+        </section>
+
+        <!-- ===== FITUR PLATFORM ===== -->
+        <section id="fitur-section" class="about-section">
+            <h3>✨ Fitur Platform</h3>
+            <p>Platform kami dilengkapi dengan berbagai fitur yang dirancang untuk meningkatkan pengalaman belajar:</p>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-card-icon">📖</div>
+                    <h4>Materi Terstruktur</h4>
+                    <p>Materi pembelajaran disusun secara sistematis dari dasar hingga menengah dengan contoh-contoh praktis</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-icon">🧪</div>
+                    <h4>Latihan Interaktif</h4>
+                    <p>Kuis dan soal latihan untuk mengukur pemahaman dan kemajuan belajar siswa</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-icon">⚡</div>
+                    <h4>Interface Responsif</h4>
+                    <p>Dapat diakses dari berbagai perangkat (desktop, tablet, smartphone)</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-icon">🎯</div>
+                    <h4>Navigasi Mudah</h4>
+                    <p>Menu yang intuitif memudahkan siswa menemukan materi yang mereka cari</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-icon">🎨</div>
+                    <h4>Desain Modern</h4>
+                    <p>Antarmuka yang menarik dan mudah digunakan meningkatkan motivasi belajar</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-icon">📚</div>
+                    <h4>Konten Lengkap</h4>
+                    <p>Materi mencakup HTML Dasar, CSS Dasar, dan Dasar Pemrograman</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== KONTAK ===== -->
+        <section id="kontak-section" class="about-section">
+            <h3>📞 Hubungi Kami</h3>
+            <p>Jika Anda memiliki pertanyaan, saran, atau feedback tentang platform kami, silakan hubungi kami melalui berbagai saluran berikut:</p>
+
+            <h4>Informasi Kontak</h4>
+            <ul>
+                <li><strong>Email:</strong> informatika@sekolah.ac.id</li>
+                <li><strong>WhatsApp:</strong> +62 XXX-XXXX-XXXX</li>
+                <li><strong>Lokasi:</strong> SMA Negeri / Swasta, Kota Bandung</li>
+            </ul>
+
+            <h4>Jam Layanan</h4>
+            <ul>
+                <li>Senin - Jumat: 07:00 - 16:00 WIB</li>
+                <li>Sabtu: 08:00 - 12:00 WIB</li>
+                <li>Minggu: Libur</li>
+            </ul>
+
+            <h4>Feedback</h4>
+            <p>Kami sangat menghargai masukan Anda untuk membuat platform ini semakin baik. Jangan ragu untuk memberikan saran atau melaporkan masalah yang Anda temui.</p>
+        </section>
+
+        <!-- ===== TIM PENGEMBANG ===== -->
+        <section class="about-section">
+            <h3>👨‍💻 Tim Pengembang</h3>
+            <p>Platform ini dikembangkan oleh tim yang berpengalaman dalam bidang pendidikan dan teknologi informasi:</p>
+
+            <h4>Kontributor Utama</h4>
+            <ul>
+                <li><strong>Developer:</strong> Tim Web Developer SMA</li>
+                <li><strong>Content Creator:</strong> Guru Informatika SMA</li>
+                <li><strong>Quality Assurance:</strong> Tim Testing Edukasi Digital</li>
+            </ul>
+
+            <p>Terima kasih kepada semua pihak yang telah berkontribusi dalam pengembangan platform pembelajaran ini.</p>
+        </section>
     </div>
 
-    <!-- MAIN CONTENT -->
-    <main>
-        <!-- PROFILE SECTION -->
-        <section>
-            <h2>👨‍💻 Profil Pembuat</h2>
-            <div class="profile-card">
-                <div class="profile-icon">👨‍🎓</div>
-                <div class="profile-name">Deva Dhanapala Haryono</div>
-                <div class="profile-info">
-                    <p>Siswa Kelas 10</p>
-                    <p>Sekolah Talenta Bandung</p>
-                </div>
-                <div>
-                    <span class="profile-badge">🎓 Kelas 10</span>
-                    <span class="profile-badge">📍 Bandung</span>
-                    <span class="profile-badge">📚 Pelajar</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- MISSION & VISION SECTION -->
-        <section>
-            <h2>🎯 Misi & Visi</h2>
-            <div class="mission-vision-container">
-                <div class="mission-box">
-                    <h3>🚀 Misi Kami</h3>
-                    <p>Memberikan akses materi informatika berkualitas tinggi yang mudah dipahami untuk semua siswa SMA, sehingga mereka dapat membangun fondasi yang kuat dalam pemrograman dan web development.</p>
-                </div>
-                <div class="vision-box">
-                    <h3>🌟 Visi Kami</h3>
-                    <p>Membantu siswa SMA memahami dasar-dasar informatika dengan cara yang mudah dan menyenangkan, menciptakan generasi yang siap menghadapi era digital.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- FEATURES SECTION -->
-        <section>
-            <h2>✨ Keunggulan Platform</h2>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">📚</div>
-                    <div class="feature-title">Materi Ringkas & Jelas</div>
-                    <div class="feature-description">Konten dirancang khusus untuk siswa SMA Kelas 10 dengan penjelasan yang mudah dipahami, tanpa membingungkan dengan istilah-istilah teknis yang rumit.</div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">✏️</div>
-                    <div class="feature-title">Kuis Interaktif</div>
-                    <div class="feature-description">Latihan soal pilihan ganda dengan sistem scoring real-time untuk mengukur pemahaman Anda setiap saat, kapan pun dan dimana pun.</div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📱</div>
-                    <div class="feature-title">Mobile-Friendly</div>
-                    <div class="feature-description">Desain responsif yang sempurna di semua perangkat, dari smartphone hingga desktop. Belajar menjadi lebih fleksibel dan menyenangkan.</div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <div class="feature-title">Fokus pada Pembelajaran</div>
-                    <div class="feature-description">Interface yang bersih dan minimalis membantu siswa fokus pada materi tanpa distraksi, menciptakan pengalaman belajar yang optimal.</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ABOUT PLATFORM SECTION -->
-        <section>
-            <h2>💡 Tentang Platform Ini</h2>
-            <div style="background-color: var(--white); border-radius: 12px; padding: 2rem; box-shadow: var(--shadow); line-height: 1.8;">
-                <p style="margin-bottom: 1rem;">
-                    Platform <strong>Informatika SMA</strong> adalah sebuah website pembelajaran yang dikembangkan sebagai Proyek Akhir untuk memenuhi kebutuhan siswa SMA Kelas 10 dalam belajar informatika.
-                </p>
-                <p style="margin-bottom: 1rem;">
-                    Platform ini menyediakan materi pembelajaran yang terstruktur dan mudah dipahami tentang <strong>HTML Dasar</strong>, <strong>CSS Dasar</strong>, dan <strong>Coding Dasar</strong>. Setiap materi dirancang dengan mempertimbangkan tingkat pemahaman siswa SMA, sehingga konsep-konsep kompleks disajikan dengan cara yang sederhana dan menarik.
-                </p>
-                <p style="margin-bottom: 1rem;">
-                    Selain materi, platform ini juga dilengkapi dengan <strong>sistem kuis interaktif</strong> yang memungkinkan siswa untuk menguji pemahaman mereka secara langsung. Dengan fitur scoring real-time, siswa dapat segera mengetahui hasil belajar mereka dan mengidentifikasi area yang masih perlu ditingkatkan.
-                </p>
-                <p>
-                    Kami berkomitmen untuk membuat belajar informatika menjadi lebih mudah, menyenangkan, dan dapat diakses oleh semua siswa, sehingga mereka dapat mempersiapkan diri menghadapi perkembangan teknologi di era digital ini.
-                </p>
-            </div>
-        </section>
-    </main>
-
-    <!-- FOOTER -->
-    <footer>
-        <p>&copy; 2026 Informatika SMA. Platform Pembelajaran untuk Kelas 10.</p>
-        <p>Dikembangkan dengan ❤️ untuk pendidikan Indonesia</p>
-        <p><a href="../index.html">← Kembali ke Beranda</a></p>
-    </footer>
-
     <script>
-        // HAMBURGER MENU TOGGLE
-        const hamburgerBtn = document.getElementById('hamburgerBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-
-        hamburgerBtn.addEventListener('click', () => {
-            hamburgerBtn.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-        });
-
-        // TUTUP MENU SAAT LINK DIKLIK
-        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-        mobileMenuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                hamburgerBtn.classList.remove('active');
-                mobileMenu.classList.remove('active');
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            
+            // Update active button
+            document.querySelectorAll('.about-nav-btn').forEach(btn => {
+                btn.classList.remove('active');
             });
+            event.target.classList.add('active');
+        }
+
+        // Set active nav link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            if (link.getAttribute('href') === 'tentang.html' || link.getAttribute('href') === window.location.pathname) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
         });
     </script>
 </body>
